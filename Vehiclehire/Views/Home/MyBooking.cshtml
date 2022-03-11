@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Vehiclehire.Models.Order>
+
+@{
+    ViewBag.Title = "My Bookings";
+}
+
+<h2>My Bookings</h2>
+
+
+<table class="table">
+    <tr>
+      
+        <th>
+            Delivery Fee
+        </th>
+        <th>
+            Date
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+       
+       
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedAt)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
+        <td>
+            @if (item.Destination == "")
+            {
+                @Html.ActionLink("Navigate To Yor Vehicle", "NavigateToComp", new { id = item.OrderId }, new { @class = "btn btn-success" })
+            }
+            @if (item.Destination != "")
+            {
+                <a href="/account/track?id=@item.OrderId" class="btn btn-info">TRACK ORDER</a>
+
+            }
+         
+        </td>
+    </tr>
+}
+
+</table>

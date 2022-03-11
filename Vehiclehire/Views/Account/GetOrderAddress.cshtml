@@ -1,0 +1,198 @@
+﻿@model IEnumerable<Vehiclehire.Models.Order>
+@{
+    ViewBag.Title = "GetOrderAddress";
+}
+
+
+<div style="margin-top:70px" align="center">
+
+    @if (ViewBag.Bal != "0")
+    {
+
+        <h2>DELIVERY OPTION</h2><br />
+        <form action="" id="deliorcole" method="post">
+            Delivery: <input type="checkbox" id="delivcheck" value="delivery" title="This will allow you to enter your Delivery Address" onclick="myFunction(),myFunctionr()">
+
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="checkbox" id="collect" value="ccollect" title="You will need to come and Collect your Order your Self" onclick="myFunction2(),myFunction2r()" />Collect
+        </form>
+
+
+
+        <script>
+
+
+            /////address show and hide//////
+            ////show address input
+            /////address show and hide//////
+            ////show address input
+            function myFunction() {
+                var checkBox = document.getElementById("delivcheck");
+                var text = document.getElementById("text");
+                var cbt = document.getElementById("cbtn");
+                if (checkBox.checked == true) {
+                    text.style.display = "block";
+                    cbt.style.display = "none";
+                } else {
+                    text.style.display = "none";
+                    cbt.style.display = "block";
+
+                }
+
+
+
+                $('input[type="checkbox"]').on('change', function () {
+                    $(this).siblings('input[type="checkbox"').prop('checked', false);
+                });
+
+            }
+
+
+            function myFunctionr() {
+                var checkBox = document.getElementById("delivcheck");
+                var cbt = document.getElementById("cbtn");
+
+                var text = document.getElementById("textr");
+                if (checkBox.checked == true) {
+                    text.style.display = "block";
+                    cbt.style.display = "none";
+
+                } else {
+                    text.style.display = "none";
+                    cbt.style.display = "block";
+
+                }
+
+
+
+                $('input[type="checkbox"]').on('change', function () {
+                    $(this).siblings('input[type="checkbox"').prop('checked', false);
+                });
+
+            }
+
+
+            function myFunction2() {
+                /////hide enter address when collect is selected
+                var checkBox = document.getElementById("collect");
+                var cbt = document.getElementById("cbtn");
+
+
+
+                var text = document.getElementById("text");
+                if (checkBox.checked == true) {
+                    text.style.display = "none";
+                    cbt.style.display = "block";
+
+
+                }
+                else {
+                    text.style.display = "none";
+                    cbt.style.display = "none";
+
+
+                }
+            }
+
+            function myFunction2r() {
+                /////hide enter address when collect is selected
+                var pl = document.getElementById("pay");
+                var cbt = document.getElementById("cbtn");
+                var checkBox = document.getElementById("collect");
+                var text = document.getElementById("textr");
+                if (checkBox.checked == true) {
+                    text.style.display = "none";
+                    pl.style.display = "block";
+                    cbt.style.display = "block";
+
+                }
+                else {
+                    text.style.display = "none";
+                    pl.style.display = "none";
+                    cbt.style.display = "none";
+
+                }
+            }
+                                        /////address show and hide//////
+
+
+
+
+
+        </script>
+
+        <div align="center">
+
+            <div class="deliveryform" id="text" style="display:none">
+                @using (Html.BeginForm("AddAddress", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="form-group" id="kk">
+                        <div class="col-md-10">
+                            @foreach (var item in Model)
+                            {
+                                <input type="number" name="id" value="@item.OrderId" hidden />
+                            }
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" id="kk">
+                        @Html.Label("Street Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="ad2" required style="width:50%" />
+
+                            @Html.ValidationMessage("This Field is Rquired", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="kk">
+                        @Html.Label("City", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="ad3" required style="width:50%" />
+
+                            @Html.ValidationMessage("This Field is Rquired", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="kk">
+                        @Html.Label("Province", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="ad4" required style="width:50%" />
+
+                            @Html.ValidationMessage("This Field is Rquired", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group" id="kk">
+                        @Html.Label("Zip Code", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="ad5" required style="width:50%" />
+
+                            @Html.ValidationMessage("This Field is Rquired", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="PROCEED TO PAYMENT" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <div id="cbtn" style="display:none">
+                <a href="/home/paymentoptions" class="btn btn-success">PROCEED TO PAYMENT</a>
+            </div>
+        </div>
+
+    }
+
+</div>

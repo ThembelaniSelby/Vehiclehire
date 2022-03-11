@@ -1,0 +1,116 @@
+﻿@model Vehiclehire.Models.Product
+
+@{
+    ViewBag.Title = "productinfo";
+}
+
+    <div class="main-content main-content-details single no-sidebar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-trail breadcrumbs">
+                        <ul class="trail-items breadcrumb">
+                            <li class="trail-item trail-begin">
+                                <a href="index-2.html">Home</a>
+                            </li>
+                            <li class="trail-item">
+                                <a href="#">Vehicles</a>
+                            </li>
+                            <li class="trail-item trail-end active">
+                                @Model.Name
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="content-area content-details full-width col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <div class="site-main">
+                        <div class="details-product">
+                            <div class="details-thumd">
+                                <div class="image-preview-container image-thick-box image_preview_container">
+                                    <img id="img_zoom" data-zoom-image="assets/images/details-item-1.jpg"
+                                         src="~/Images/Uploads/Products/@Model.Id/@Model.ImageName" alt="img">
+                                    <a href="#" class="btn-zoom open_qv"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                            <div class="details-infor">
+                                <h1 class="product-title">
+                                    @Model.Name
+                                </h1>
+                                
+                              
+                                <div class="price">
+                                    <span>R: @Model.Price</span>
+                                </div>
+                                
+                                <div class="variations">
+                                    <div class="attribute attribute_color">
+                                        <div class="color-text text-attribute">
+                                            Color:@Model.color
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="attribute attribute_size">
+                                        <div class="size-text text-attribute">
+                                            Size: 5 Seate
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                                <div class="group-button">
+                                    <div class="yith-wcwl-add-to-wishlist">
+                                        <div class="yith-wcwl-add-button">
+                                            <a href="#">Add to Wishlist</a>
+                                        </div>
+                                    </div>
+                                    <div class="size-chart-wrapp">
+                                        <div class="btn-size-chart">
+                                            <a id="size_chart" href="/Images/Uploads/Products/@Model.Id/@Model.ImageName" class="fancybox">
+                                                View
+                                                Size Chart
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="quantity-add-to-cart">
+                                        <div class="quantity">
+                                            <div class="control">
+                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                <input type="text" data-step="1" data-min="0" value="1" title="Qty"
+                                                       class="input-qty qty" size="4">
+                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                            </div>
+                                        </div>
+                                        <a href="/home/addtocart?id=@Model.Id&link=@Request.Url.AbsoluteUri" class="single_add_to_cart_button button">Add to hire list</a> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-details-product">
+                            <ul class="tab-link">
+                                <li class="active">
+                                    <a data-toggle="tab" aria-expanded="true" href="#product-descriptions">Descriptions </a>
+                                </li>
+                               
+                            
+                            </ul>
+                            <div class="tab-container">
+                                <div id="product-descriptions" class="tab-panel active">
+                                    <p>
+                                         @Model.Description
+                                    </p>
+                                  
+                                </div>
+                               
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  

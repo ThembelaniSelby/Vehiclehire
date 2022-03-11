@@ -1,42 +1,425 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<title>@ViewBag.Title</title>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&amp;display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/css/slick.css">
+    <link rel="stylesheet" href="/assets/css/chosen.min.css">
+    <link rel="stylesheet" href="/assets/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="/assets/css/lightbox.min.css">
+    <link rel="stylesheet" href="/assets/js/fancybox/source/jquery.fancybox.css">
+    <link rel="stylesheet" href="/assets/css/jquery.scrollbar.min.css">
+    <link rel="stylesheet" href="/assets/css/mobile-menu.css">
+    <link rel="stylesheet" href="/assets/fonts/flaticon/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<body class="home">
+    <header class="header style2">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-left">
+                    <div class="header-message">
+                        Ride your Dream car For Less
+                    </div>
+                </div>
+                <div class="top-bar-right">
+                    <div class="header-language">
+                        <div class="tanajil-language tanajil-dropdown">
+                            <a href="#" class="active language-toggle" data-tanajil="tanajil-dropdown">
+                                <span>
+                                    English (ZAR)
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="header-user-links">
+
+                       
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+        </div>
+        <div class="container">
+            <div class="main-header">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-md-4 col-xs-7 col-ts-12 header-element">
+                        <div class="block-search-block">
+                            <form class="form-search">
+                                <div class="form-content">
+                                    <div class="inner">
+                                        <input type="text" class="input" name="s" value="" placeholder="Search here">
+                                        <button class="btn-search" type="submit">
+                                            <span class="icon-search"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-md-4 col-xs-5 col-ts-12">
+                        <div class="logo">
+                            <a href="/">
+                                <h1>DOZI RENTALS</h1>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12 col-md-4 col-xs-12 col-ts-12">
+                        <div class="header-control">
+                            <div class="block-minicart tanajil-mini-cart block-header tanajil-dropdown">
+                                <a href="javascript:void(0);" class="shopcart-icon" data-tanajil="tanajil-dropdown">
+                                    List
+                                    <span class="count">
+                                        @Html.Action("CartPartial","Home")
+                                    </span>
+                                </a>
+                                <div class="no-product tanajil-submenu">
+                                    <a href="/home/cart">
+                                        <p class="text">
+                                            You have
+                                            <span>
+                                                @Html.Action("CartPartial", "Home") item(s)
+
+                                            </span>
+                                            in your booking list
+                                        </p>
+                                    @*</a>*@
+                                </div>
+                            </div>
+                            <a class="menu-bar mobile-navigation menu-toggle" href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-nav-container">
+            <div class="container">
+                <div class="header-nav-wapper main-menu-wapper">
+
+                    <div class="vertical-wapper block-nav-categori">
+                        <div class="block-title">
+                            <span class="icon-bar">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                            <span class="text">All Categories</span>
+                        </div>
+                        <div class="block-content verticalmenu-content">
+                            <ul class="tanajil-nav-vertical vertical-menu tanajil-clone-mobile-menu">
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-menu-item-title" title="New Arrivals">New Arrivals</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a title="Hot Sale" href="#" class="tanajil-menu-item-title">Hot Sale</a>
+                                </li>
+                              
+                                <li class="menu-item">
+                                    <a title="Interior" href="#" class="tanajil-menu-item-title">Interior</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a title="Lighting" href="#" class="tanajil-menu-item-title">Lighting</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a title="Wheels" href="#" class="tanajil-menu-item-title">Wheels</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a title="Tires" href="#" class="tanajil-menu-item-title">Tires</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a title="Exterior" href="#" class="tanajil-menu-item-title">Exterior</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header-nav">
+                        <div class="container-wapper">
+                            <ul class="tanajil-clone-mobile-menu tanajil-nav main-menu " id="menu-main-menu">
+                                <li class="menu-item  menu-item-has-children">
+                                    <a href="/" class="tanajil-menu-item-title" title="Home">Home</a>
+                                    <span class="toggle-submenu"></span>
+
+                                </li>
+                                <li class="menu-item menu-item-has-children">
+                                    <a href="/home/products" class="tanajil-menu-item-title" title="Vehicles">Vehicles</a>
+                                    <span class="toggle-submenu"></span>
+                                </li>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a href="/account/user-profile"><i class="fa fa-user"></i>@User.Identity.Name </a>
+                                    </li>
+                                    <li>
+                                        <a href="/home/mybooking"><i class="fa fa-user"></i>My Bookings </a>
+                                    </li>
+                                    <li>
+                                        <a href="/account/logout"><i class="fa fa-signout"></i>Logout </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="/Account/login">Login or Register</a>
+                                    </li>
+                                }
+
+                                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                    <li>
+                                        <a href="/admin/admin/index"><i class="fa fa-gear"></i> Admin-area</a>
+                                    </li>
+                                }
+                                @if (Request.IsAuthenticated && User.IsInRole("Driver"))
+                                {
+                                    <li>
+                                        <a href="/home/NewDeliveries"><i class="fa fa-fw fa-user"></i> Driver-area</a>
+                                    </li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="header-device-mobile">
+        <div class="wapper">
+            <div class="item mobile-logo">
+                <div class="logo">
+                    <a href="/">
+                        <h1>Dozi</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="item item mobile-search-box has-sub">
+                <a href="#">
+                    <span class="icon">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </span>
+                </a>
+                <div class="block-sub">
+                    <a href="#" class="close">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                    <div class="header-searchform-box">
+                        <form class="header-searchform">
+                            <div class="searchform-wrap">
+                                <input type="text" class="search-input" placeholder="Enter keywords to search...">
+                                <input type="submit" class="submit button" value="Search">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="item mobile-settings-box has-sub">
+                <a href="#">
+                    <span class="icon">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </span>
+                </a>
+                <div class="block-sub">
+                    <a href="#" class="close">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                    <div class="block-sub-item">
+                        <h5 class="block-item-title">Currency</h5>
+                        <form class="currency-form tanajil-language">
+                            <ul class="tanajil-language-wrap">
+                                <li class="active">
+                                    <a href="#">
+                                        <span>
+                                            English (ZAR)
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="item menu-bar">
+                <a class=" mobile-navigation  menu-toggle" href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+
+
+    <div>
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <footer class="footer style7">
+        <div class="container">
+            <div class="container-wapper">
+                <div class="row">
+                    <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                        <div class="widget-box">
+                            <div class="single-img">
+                                <a href="/"><h1 style="color:white">Dozi Rentals</h1></a>
+                            </div>
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a href="#">
+                                        <span class="flaticon-placeholder"></span> 2828 Mhlongo Road Lamont
+                                        Durban
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#"><span class="fa fa-phone"></span>(+27)603180098</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#"><span class="fa fa-envelope-o"></span>User@Dozirentals.com</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#"><span class="flaticon-clock"></span>Mon-Sat 9:00pm - 5:00pm Sun : Closed</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-2">
+
+                    </div>
+                    <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-2">
+
+                    </div>
+                    <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                        <div class="tanajil-newsletter style1">
+                            <div class="newsletter-head">
+                                <h3 class="title">Newsletter</h3>
+                            </div>
+                            <div class="newsletter-form-wrap">
+                                <div class="list">
+                                    Get notified of new products, limited releases, and more.
+                                </div>
+                                <input type="email" class="input-text email email-newsletter"
+                                       placeholder="Your email letter">
+                                <button class="button btn-submit submit-newsletter">SUBSCRIBE</button>
+                            </div>
+                        </div>
+                        <div class="tanajil-socials">
+                            <ul class="socials">
+                                <li>
+                                    <a href="#" class="social-item" target="_blank">
+                                        <i class="icon fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="social-item" target="_blank">
+                                        <i class="icon fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="social-item" target="_blank">
+                                        <i class="icon fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 border-custom">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="footer-end">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="coppyright">
+                                <a href="templateshub.net">Dozi Rentals &copy;2021</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="tanajil-payment">
+                                <img src="~/assets/images/payments.png" alt="img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-device-mobile">
+        <div class="wapper">
+            <div class="footer-device-mobile-item device-home">
+                <a href="index-2.html">
+                    <span class="icon">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </span>
+                    Home
+                </a>
+            </div>
+            <div class="footer-device-mobile-item device-home device-wishlist">
+                <a href="#">
+                    <span class="icon">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                    </span>
+                    Wishlist
+                </a>
+            </div>
+            <div class="footer-device-mobile-item device-home device-cart">
+                <a href="#">
+                    <span class="icon">
+                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                        <span class="count-icon">
+                            0
+                        </span>
+                    </span>
+                    <span class="text">Cart</span>
+                </a>
+            </div>
+            <div class="footer-device-mobile-item device-home device-user">
+                <a href="login.html">
+                    <span class="icon">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                    Account
+                </a>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="backtotop">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+    <script src="~/assets/js/jquery-1.12.4.min.js"></script>
+    <script src="~/assets/js/jquery.plugin-countdown.min.js"></script>
+    <script src="~/assets/js/jquery-countdown.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/magnific-popup.min.js"></script>
+    <script src="~/assets/js/isotope.min.js"></script>
+    <script src="~/assets/js/jquery.scrollbar.min.js"></script>
+    <script src="~/assets/js/jquery-ui.min.js"></script>
+    <script src="~/assets/js/mobile-menu.js"></script>
+    <script src="~/assets/js/chosen.min.js"></script>
+    <script src="~/assets/js/slick.js"></script>
+    <script src="~/assets/js/jquery.elevateZoom.min.js"></script>
+    <script src="~/assets/js/jquery.actual.min.js"></script>
+    <script src="~/assets/js/fancybox/source/jquery.fancybox.js"></script>
+    <script src="~/assets/js/lightbox.min.js"></script>
+    <script src="~/assets/js/owl.thumbs.min.js"></script>
+    <script src="~/assets/js/jquery.scrollbar.min.js"></script>
+    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
+    <script src="~/assets/js/frontend-plugin.js"></script>
 </body>
+
+<!-- tanajil/home2.html  21 Nov 2019 03:34:58 GMT -->
 </html>

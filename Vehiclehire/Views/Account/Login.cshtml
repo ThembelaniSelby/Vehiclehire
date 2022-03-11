@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+
+
+
+<div class="main-content main-content-login">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="index-2.html">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">
+                            Authentication
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="content-area col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="site-main">
+                    <h3 class="custom_blog_title">
+                        Authentication
+                    </h3>
+                    <div class="customer_login">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="login-item">
+                                    <h5 class="title-login">Login your Account</h5>
+                                    <form class="login" action="/account/Login" method="post">
+                                       
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Email</label>
+                                            <input title="username" name="Username" type="text" class="input-text">
+                                        </p>
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Password</label>
+                                            <input title="password" type="password" name="Password" class="input-text">
+                                        </p>
+                                        <p class="lost_password">
+                                            <span class="inline">
+                                                <input type="checkbox" id="cb1">
+                                                <label for="cb1" class="label-text">Remember me</label>
+                                            </span>
+                                            <a href="/account/reset" class="forgot-pw">Forgot password?</a>
+                                        </p>
+                                        <p class="form-row">
+                                            <input type="submit" class="button-submit" value="login">
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="login-item">
+                                    <h5 class="title-login">Register now</h5>
+                                    <form class="register" action="/Account/CreateAccount" method="post">
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">First name</label>
+                                            <input title="first name" name="FirstName" type="text" class="input-text">
+                                        </p>
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Last name</label>
+                                            <input title="Last name" type="text" name="LastName" class="input-text">
+                                        </p> <p class="form-row form-row-wide">
+                                            <label class="text">Email</label>
+                                            <input title="email" type="email" name="EmailAddress" class="input-text">
+                                        </p>
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Phone number</label>
+                                            <input title="email" type="tel" name="PhoneNumber" class="input-text">
+                                        </p>
+
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Password</label>
+                                            <input title="pass" type="password" name="Password" class="input-text">
+                                        </p>
+                                        <p class="form-row form-row-wide">
+                                            <label class="text">Confirm password</label>
+                                            <input title="pass" type="password" name="ConfirmPassword" class="input-text">
+                                        </p>
+
+                                        <p class="form-row">
+                                            <span class="inline">
+                                                <input type="checkbox" id="cb2">
+                                                <label for="cb2" class="label-text">I agree to <span>Terms & Conditions</span></label>
+                                            </span>
+                                        </p>
+                                        <p class="">
+                                            <input type="submit" class="button-submit" value="Register Now">
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

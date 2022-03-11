@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,7 +46,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.1\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -110,6 +134,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -120,23 +145,262 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Db.cs" />
+    <Compile Include="Models\Models.cs" />
+    <Compile Include="Models\ViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\animate.min.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\chosen.min.css" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\images\ui-icons_444444_256x240.html" />
+    <Content Include="assets\css\images\ui-icons_555555_256x240.html" />
+    <Content Include="assets\css\images\ui-icons_777620_256x240.html" />
+    <Content Include="assets\css\images\ui-icons_777777_256x240.html" />
+    <Content Include="assets\css\images\ui-icons_cc0000_256x240.html" />
+    <Content Include="assets\css\images\ui-icons_ffffff_256x240.html" />
+    <Content Include="assets\css\jquery-ui.css" />
+    <Content Include="assets\css\jquery.scrollbar.min.css" />
+    <Content Include="assets\css\lightbox.min.css" />
+    <Content Include="assets\css\magnific-popup.min.css" />
+    <Content Include="assets\css\mCSB_buttons.html" />
+    <Content Include="assets\css\mobile-menu.css" />
+    <Content Include="assets\css\owl.carousel.min.css" />
+    <Content Include="assets\css\owl.video.play.html" />
+    <Content Include="assets\css\pe-icon-7-stroke.css" />
+    <Content Include="assets\css\slick.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\fonts\flaticon\flaticon.css" />
+    <Content Include="assets\fonts\flaticon\Flaticon.svg" />
+    <Content Include="assets\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\fonts\Pe-icon-7-strokebb1d.svg" />
+    <Content Include="assets\images\404.png" />
+    <Content Include="assets\images\about-background.jpg" />
+    <Content Include="assets\images\avartar.jpg" />
+    <Content Include="assets\images\avt-blog1.png" />
+    <Content Include="assets\images\banner-01_full_width.jpg" />
+    <Content Include="assets\images\banner-02_full_width.jpg" />
+    <Content Include="assets\images\banner-home-10.jpg" />
+    <Content Include="assets\images\banner-home-11.jpg" />
+    <Content Include="assets\images\banner-home-12.jpg" />
+    <Content Include="assets\images\banner-home-13.jpg" />
+    <Content Include="assets\images\banner-home-14.jpg" />
+    <Content Include="assets\images\banner-home-15.jpg" />
+    <Content Include="assets\images\banner-home-19.jpg" />
+    <Content Include="assets\images\banner-home-2.jpg" />
+    <Content Include="assets\images\banner-home-3.jpg" />
+    <Content Include="assets\images\banner-home-4.jpg" />
+    <Content Include="assets\images\banner-home-5.jpg" />
+    <Content Include="assets\images\banner-home-6.jpg" />
+    <Content Include="assets\images\banner-home-7.jpg" />
+    <Content Include="assets\images\banner-home-71.jpg" />
+    <Content Include="assets\images\banner-home-8.jpg" />
+    <Content Include="assets\images\banner-home-9.jpg" />
+    <Content Include="assets\images\blog-grid-1.jpg" />
+    <Content Include="assets\images\blog-grid-2.jpg" />
+    <Content Include="assets\images\blog-grid-3.jpg" />
+    <Content Include="assets\images\blog-grid-4.jpg" />
+    <Content Include="assets\images\blog-item-list-1.jpg" />
+    <Content Include="assets\images\blog-item-list-2.jpg" />
+    <Content Include="assets\images\blog-item-list-3.jpg" />
+    <Content Include="assets\images\blog-item-list-4.jpg" />
+    <Content Include="assets\images\blog-item-list-5.jpg" />
+    <Content Include="assets\images\blog1.jpg" />
+    <Content Include="assets\images\blog2.jpg" />
+    <Content Include="assets\images\blog3.jpg" />
+    <Content Include="assets\images\cart-item-1.jpg" />
+    <Content Include="assets\images\cart-item-2.jpg" />
+    <Content Include="assets\images\cart-item-3.jpg" />
+    <Content Include="assets\images\close-icon.png" />
+    <Content Include="assets\images\details-item-1.jpg" />
+    <Content Include="assets\images\details-item-2.jpg" />
+    <Content Include="assets\images\details-item-3.jpg" />
+    <Content Include="assets\images\details-item-4.jpg" />
+    <Content Include="assets\images\favicon.png" />
+    <Content Include="assets\images\hover-menu.png" />
+    <Content Include="assets\images\icon-checkout.png" />
+    <Content Include="assets\images\item-instagram-1.jpg" />
+    <Content Include="assets\images\item-instagram-2.jpg" />
+    <Content Include="assets\images\item-instagram-3.jpg" />
+    <Content Include="assets\images\item-instagram-4.jpg" />
+    <Content Include="assets\images\item-instagram-5.jpg" />
+    <Content Include="assets\images\item-minicart-1.jpg" />
+    <Content Include="assets\images\item-minicart-2.jpg" />
+    <Content Include="assets\images\item-minicart-3.jpg" />
+    <Content Include="assets\images\item-order1.jpg" />
+    <Content Include="assets\images\item-order2.jpg" />
+    <Content Include="assets\images\logo-light.png" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\mega-bg.jpg" />
+    <Content Include="assets\images\member1.png" />
+    <Content Include="assets\images\member2.png" />
+    <Content Include="assets\images\member3.png" />
+    <Content Include="assets\images\newsletter-bg-2.jpg" />
+    <Content Include="assets\images\newsletter-bg.jpg" />
+    <Content Include="assets\images\payments.png" />
+    <Content Include="assets\images\pinmap-item6.jpg" />
+    <Content Include="assets\images\pinmap-item7.jpg" />
+    <Content Include="assets\images\play.png" />
+    <Content Include="assets\images\product-item-1.jpg" />
+    <Content Include="assets\images\product-item-10.jpg" />
+    <Content Include="assets\images\product-item-11.jpg" />
+    <Content Include="assets\images\product-item-12.jpg" />
+    <Content Include="assets\images\product-item-13.jpg" />
+    <Content Include="assets\images\product-item-14.jpg" />
+    <Content Include="assets\images\product-item-15.jpg" />
+    <Content Include="assets\images\product-item-16.jpg" />
+    <Content Include="assets\images\product-item-17.jpg" />
+    <Content Include="assets\images\product-item-18.jpg" />
+    <Content Include="assets\images\product-item-19.jpg" />
+    <Content Include="assets\images\product-item-2.jpg" />
+    <Content Include="assets\images\product-item-20.jpg" />
+    <Content Include="assets\images\product-item-21.jpg" />
+    <Content Include="assets\images\product-item-22.jpg" />
+    <Content Include="assets\images\product-item-3.jpg" />
+    <Content Include="assets\images\product-item-4.jpg" />
+    <Content Include="assets\images\product-item-5.jpg" />
+    <Content Include="assets\images\product-item-6.jpg" />
+    <Content Include="assets\images\product-item-7.jpg" />
+    <Content Include="assets\images\product-item-8.jpg" />
+    <Content Include="assets\images\product-item-9.jpg" />
+    <Content Include="assets\images\product-item-black-1.jpg" />
+    <Content Include="assets\images\product-item-black-10.jpg" />
+    <Content Include="assets\images\product-item-black-2.jpg" />
+    <Content Include="assets\images\product-item-black-3.jpg" />
+    <Content Include="assets\images\product-item-black-4.jpg" />
+    <Content Include="assets\images\product-item-black-5.jpg" />
+    <Content Include="assets\images\product-item-black-6.jpg" />
+    <Content Include="assets\images\quote-item.png" />
+    <Content Include="assets\images\sidebar-post1.jpg" />
+    <Content Include="assets\images\sidebar-post2.jpg" />
+    <Content Include="assets\images\sidebar-post3.jpg" />
+    <Content Include="assets\images\size-chart.jpg" />
+    <Content Include="assets\images\slider-blog-thumb-1.jpg" />
+    <Content Include="assets\images\slider-blog-thumb-2.jpg" />
+    <Content Include="assets\images\slider-blog-thumb-3.jpg" />
+    <Content Include="assets\images\slider-blog-thumb-4.jpg" />
+    <Content Include="assets\images\slider-blog-thumb-5.jpg" />
+    <Content Include="assets\images\slider-blog-thumb-6.jpg" />
+    <Content Include="assets\images\slider-blog-thumb-7.jpg" />
+    <Content Include="assets\images\slider-thumb-full-1.jpg" />
+    <Content Include="assets\images\slider-thumb-full-2.jpg" />
+    <Content Include="assets\images\slider-thumb-full-3.jpg" />
+    <Content Include="assets\images\slider-thumb1.jpg" />
+    <Content Include="assets\images\slider-thumb2.jpg" />
+    <Content Include="assets\images\slider-thumb3.jpg" />
+    <Content Include="assets\images\slider-thumb4.jpg" />
+    <Content Include="assets\images\slider-thumb5.jpg" />
+    <Content Include="assets\images\slider-thumb6.jpg" />
+    <Content Include="assets\images\test-bg.jpg" />
+    <Content Include="assets\images\testimonial-1.jpg" />
+    <Content Include="assets\images\testimonial-2.jpg" />
+    <Content Include="assets\images\widget-banner.jpg" />
+    <Content Include="assets\img\close-icon.html" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\chosen.min.js" />
+    <Content Include="assets\js\fancybox\source\blank.gif" />
+    <Content Include="assets\js\fancybox\source\fancybox_loading%402x.gif" />
+    <Content Include="assets\js\fancybox\source\fancybox_loading.gif" />
+    <Content Include="assets\js\fancybox\source\fancybox_overlay.png" />
+    <Content Include="assets\js\fancybox\source\fancybox_sprite%402x.png" />
+    <Content Include="assets\js\fancybox\source\fancybox_sprite.png" />
+    <Content Include="assets\js\fancybox\source\jquery.fancybox.css" />
+    <Content Include="assets\js\fancybox\source\jquery.fancybox.js" />
+    <Content Include="assets\js\frontend-plugin.js" />
+    <Content Include="assets\js\isotope.min.js" />
+    <Content Include="assets\js\jquery-1.12.4.min.js" />
+    <Content Include="assets\js\jquery-countdown.min.js" />
+    <Content Include="assets\js\jquery-ui.min.js" />
+    <Content Include="assets\js\jquery.actual.min.js" />
+    <Content Include="assets\js\jquery.elevateZoom.min.js" />
+    <Content Include="assets\js\jquery.plugin-countdown.min.js" />
+    <Content Include="assets\js\jquery.scrollbar.min.js" />
+    <Content Include="assets\js\lightbox.min.js" />
+    <Content Include="assets\js\magnific-popup.min.js" />
+    <Content Include="assets\js\mobile-menu.js" />
+    <Content Include="assets\js\owl.carousel.min.js" />
+    <Content Include="assets\js\owl.thumbs.min.js" />
+    <Content Include="assets\js\slick.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="html5-qrcode.min.js" />
+    <Content Include="Images\Uploads\Products\1\Merc-VClass-6.jpg" />
+    <Content Include="Images\Uploads\Products\1\Thumbs\Merc-VClass-6.jpg" />
+    <Content Include="Images\Uploads\Products\2\Mercedes-Benz-2019-V-Class.jpg" />
+    <Content Include="Images\Uploads\Products\2\Thumbs\Mercedes-Benz-2019-V-Class.jpg" />
+    <Content Include="Images\Uploads\Products\3\Merc-VClass-5.jpg" />
+    <Content Include="Images\Uploads\Products\3\Thumbs\Merc-VClass-5.jpg" />
+    <Content Include="Images\Verify\XEQJYSVB.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="assets\fonts\flaticon\Flaticon.eot" />
+    <Content Include="assets\fonts\flaticon\Flaticon.ttf" />
+    <Content Include="assets\fonts\flaticon\Flaticon.woff" />
+    <Content Include="assets\fonts\flaticon\Flaticon.woff2" />
+    <Content Include="assets\fonts\flaticon\Flaticond41d.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="assets\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\fonts\Pe-icon-7-strokebb1d.eot" />
+    <Content Include="assets\fonts\Pe-icon-7-strokebb1d.ttf" />
+    <Content Include="assets\fonts\Pe-icon-7-strokebb1d.woff" />
+    <Content Include="assets\fonts\Pe-icon-7-stroked41d.eot" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddDelivery.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Adddriver.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddPickDelivery.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddPickPoint.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddVehicle.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\allocate.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\ApprovedBookings.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\ApproveRefund.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Bookings.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Categories.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\CollectOrder.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Deliveries.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Drivers.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\OrderCollected.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\OrderCollectFailed.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Orders.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\PickUpPoints.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\ProcessedOrders.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\ProductDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Products.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Refunds.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Schedulerefundcollect.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Vehicles.cshtml" />
+    <None Include="Properties\PublishProfiles\2021Vehiclehire - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -159,13 +423,33 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\CreateAccount.cshtml" />
+    <Content Include="Views\Account\UserNavPartial.cshtml" />
+    <Content Include="Views\Account\VerifyAddress.cshtml" />
+    <Content Include="Views\Account\Reset.cshtml" />
+    <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Home\productinfo.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Home\CartPartial.cshtml" />
+    <Content Include="Views\Account\GetOrderAddress.cshtml" />
+    <Content Include="Views\Home\PaymentOptions.cshtml" />
+    <Content Include="Views\Home\MyBooking.cshtml" />
+    <Content Include="Views\Home\NavigateToComp.cshtml" />
+    <Content Include="Views\Home\NewDeliveries.cshtml" />
+    <Content Include="Views\Account\ConfirmDelivery.cshtml" />
+    <Content Include="Views\Home\Scanqr.cshtml" />
+    <Content Include="Views\Home\OrderDelivered.cshtml" />
+    <Content Include="Views\Home\OrderDeliveryFailed.cshtml" />
+    <Content Include="Views\Account\Track.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Images\Uploads\Products\1\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\2\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\3\Gallery\Thumbs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -213,7 +497,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
